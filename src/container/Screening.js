@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { prevPage, nextPage } from '../redux/actions';
+// import { data } from '../data.js'
+
 
 class Screening extends React.Component {
 
     prevPageClick = (e) => {
-        // console.log("prev page click in Screening")
         e.preventDefault()
         this.props.prevPage()
     }
@@ -15,27 +16,46 @@ class Screening extends React.Component {
         this.props.nextPage()
     }
     
+    currentQuestion = () => {
+        return this.props.questions[this.props.page]
+    }
+
+    renderQuestion = () => {
+        return  <>
+            <h2>{this.currentQuestion().category}</h2>
+            { this.currentQuestion().type === "multiple-choice" ?
+                <>
+                <p>{this.currentQuestion().question}</p>
+    { this.currentQuestion().choices.map(c => <><input type="radio"></input><label>{c}</label></>) }
+                </>
+                
+            :
+            <>
+                <label>{this.currentQuestion().question}</label>
+                <select className="dropdown">
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                </>
+             }
+        </>
+    }
     render(){
         const divStyling = {
-            backgroundColor: "#ff5f61",
-            // backgroundColor: "#66cc99",
+            backgroundColor: "#fff0de",
             height: "90vh",
             width: "90vw",
             margin: "2.5vh 5vw",
             borderRadius: "25px",
             color: "#ffffff"
         }
-        const pStyling = {
-            margin: "2.5vh 5vw",
-            fontSize: "18px"
-        }
+
         return(
             <div style={divStyling}>
                 <form
                     className="form-container"
                 >
-                    <label>Question __</label>
-                    <input></input>
+                    {this.renderQuestion()}
                     <button
                         onClick={this.prevPageClick} 
                         className="pag-btn prev"
@@ -53,7 +73,8 @@ class Screening extends React.Component {
 
 const msp = state => {
     return {
-        page: state.page
+        page: state.page,
+        questions: state.questions
     }
 }
 

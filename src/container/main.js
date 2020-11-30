@@ -9,7 +9,7 @@ class Main extends React.Component {
     
     render(){
         const divStyling = {
-            backgroundColor: "#ff5f61",
+            backgroundColor: "#fff0de",
             // backgroundColor: "#66cc99",
             height: "90vh",
             width: "90vw",
@@ -26,14 +26,11 @@ class Main extends React.Component {
         }
         return(
             <div style={divStyling}>
-                <h2>Main</h2>
+                <h2>Welcome</h2>
                 <p 
                     style={pStyling} 
                     // className="red"
-                >Welcome to ecd evaluation of some terrible things that happened to you in the recent past. Do you mind answering some questions?</p>
-                {/* <button 
-                    onClick={this.clickHandler}
-                    >BEGIN</button> */}
+                >Based on your clinical evaluation, please answer the following questions. A positive screen will generate a list of local referral resources.</p>
                 <NavLink 
                     className="begin-btn"
                     to="screening_tool"
