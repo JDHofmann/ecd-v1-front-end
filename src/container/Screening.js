@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { prevPage, nextPage } from '../redux/actions';
+import { prevPage, nextPage} from '../redux/actions';
 // import { data } from '../data.js'
 
 
 class Screening extends React.Component {
+
 
     prevPageClick = (e) => {
         e.preventDefault()
@@ -21,28 +22,19 @@ class Screening extends React.Component {
     }
 
     renderQuestion = () => {
-        return  <>
+        return <>
             <h2>{this.currentQuestion().category}</h2>
-            { this.currentQuestion().type === "multiple-choice" ?
-                <>
-                <p>{this.currentQuestion().question}</p>
-    { this.currentQuestion().choices.map(c => <><input type="radio"></input><label>{c}</label></>) }
-                </>
-                
-            :
-            <>
-                <label>{this.currentQuestion().question}</label>
-                <select className="dropdown">
-                    <option>Yes</option>
-                    <option>No</option>
-                </select>
-                </>
-             }
+            <h3></h3>
+            <fieldset>
+                <legend>{this.currentQuestion().text}</legend>
+            </fieldset>
         </>
     }
+
     render(){
         const divStyling = {
             backgroundColor: "#fff0de",
+            backgroundColor: '#f0f0f0',
             height: "90vh",
             width: "90vw",
             margin: "2.5vh 5vw",
