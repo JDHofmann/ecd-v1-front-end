@@ -1,9 +1,9 @@
 import { combineReducers } from "redux"
-import { data } from '../data.js'
+// import { data } from '../data.js'
 
 const defaultState = {
     page: 1,
-    questions: data
+    questions: []
 }
 
 const pageReducer = (
@@ -29,6 +29,10 @@ const questionsReducer = (
     action
 ) => {
     switch (action.type){
+
+        case 'LOAD_QUESTIONS':
+        return action.questions
+
         default :
         return state
     }

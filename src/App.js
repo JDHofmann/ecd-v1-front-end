@@ -1,12 +1,18 @@
 import './App.css';
 import React from 'react'
 import Main from './container/main';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import {  Route, Switch } from 'react-router-dom';
 import Screening from './container/Screening';
 import Resources from './container/Resources';
+import { fetchQuestions } from './redux/actions';
+
 
 class App extends React.Component {
+
+  componentDidMount(){
+    this.props.fetchQuestions()
+}
 
   render(){
   
@@ -36,4 +42,9 @@ class App extends React.Component {
 
 }
 
-export default App;
+const mdp = dispatch => {
+  return {
+      fetchQuestions: () => dispatch(fetchQuestions())
+  }
+}
+export default connect(null, mdp)(App)

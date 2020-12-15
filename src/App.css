@@ -1,11 +1,13 @@
 body {
   background-color: #1a2263;
+  background: #101040;
 }
 
 h1 {
   /* color: #ffffff;
   color: #ebcab3; */
   color: #fae0c8;
+  color: #fff0f0;
   margin: 1vh 5vw;
 }
 
@@ -36,6 +38,8 @@ ul, li {
   /* color: #202020; */
   text-decoration: none;
   background-color: #ebcab3;
+  color: #f0f0f0;
+  background: #101040;
 }
 
 .begin-btn:hover {
@@ -55,10 +59,12 @@ ul, li {
   height: 5vh;
   /* margin: 5vh 20vw; */
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 15px;
   line-height: 5vh;
   background-color: #ebcab3;
+  color: #f0f0f0;
+  background: #101040;
 }
 
 .prev {
