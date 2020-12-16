@@ -1,10 +1,17 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 class Main extends React.Component {
 
-    clickHandler = () => {
-        this.props.beginClickHandler()
+    state = {
+        redirect: false
+    }
+
+    begin = () => {
+        this.props.fetchUsers()
+        this.setState({
+            redirect: true
+        })
     }
     
     render(){
@@ -21,22 +28,27 @@ class Main extends React.Component {
             margin: "2.5vh 5vw",
             fontSize: "18px"
         }
-        const btnStyling = {
 
-        }
+        
         return(
+            <>
+            {
+                this.state.redirect ?
+                <Redirect to="screening_tool/1"/>
+                :null
+            }
             <div style={divStyling}>
                 <h2>Welcome</h2>
                 <p 
                     style={pStyling} 
                     // className="red"
                 >Based on your clinical evaluation, please answer the following questions. A positive screen will generate a list of local referral resources.</p>
-                <NavLink 
-                    className="begin-btn"
-                    to="screening_tool"
-                >Begin</NavLink>
+                <button
+                    onClick={this.begin}
+                    className="begin-btn">Begin</button>
 
             </div>
+            </>
         )
     }
 }

@@ -12,6 +12,25 @@ export const fetchQuestions = () => {
     }
 }
 
+export const fetchUsers = () => {
+    return (dispatch) => {
+        fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: {
+                "content-type":"application/json",
+                "accepts":"application/json"
+            },
+            body: JSON.stringify({
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => dispatch({
+            type: 'SET USER',
+            user: data.id
+        }))
+    }
+}
+
 
 export const nextPage = () => {
     return {

@@ -1,9 +1,9 @@
 import { combineReducers } from "redux"
-// import { data } from '../data.js'
 
 const defaultState = {
     page: 1,
-    questions: []
+    questions: [],
+    user: null
 }
 
 const pageReducer = (
@@ -31,6 +31,7 @@ const questionsReducer = (
     switch (action.type){
 
         case 'LOAD_QUESTIONS':
+
         return action.questions
 
         default :
@@ -38,9 +39,22 @@ const questionsReducer = (
     }
 }
 
+const userReducer = (
+    state = defaultState.user,
+    action
+) => {
+    switch (action.type){
+        case 'SET USER':
+            return action.user 
+        default: 
+            return state
+    }
+}
+
 const rootReducer = combineReducers({
     page: pageReducer,
-    questions: questionsReducer
+    questions: questionsReducer,
+    user: userReducer
 })
 
 export default rootReducer
